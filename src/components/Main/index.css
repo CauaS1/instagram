@@ -63,6 +63,10 @@
   font-size: 1.2rem;
 }
 
+.main-info span {
+  color: #caced1;
+}
+
 /*likes*/
 .likes {
   display: flex;
@@ -85,8 +89,10 @@
   color: #d4d8db;
 }
 
-.likes img {
+.likes a img {
   width: 2rem;
   height: 2rem;
   margin-left: 1rem;
+
+  /* filter: invert(16%) sepia(65%) saturate(6211%) hue-rotate(330deg) brightness(91%) contrast(112%); */
 }

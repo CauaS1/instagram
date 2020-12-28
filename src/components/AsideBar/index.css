@@ -49,11 +49,11 @@ aside .top-side .insta, aside .activity .insta {
   line-height: 4.4rem;
 
   text-decoration: none;
-  color: #dddedf;
+  color: #caced1;
 }
 
 .activity a:hover {
-  border-left: .3rem solid #f84f6e;
+  border-left: .3rem solid #f50057;
   color: #616c73;
 }
 
@@ -81,7 +81,7 @@ aside .bottom-side a {
 }
 
 aside .bottom-side a:hover {
-  opacity: .8;
+  background-color: #f3f3f5;
 }
 
 aside .bottom-side .insta {

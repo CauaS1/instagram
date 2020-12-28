@@ -27,7 +27,8 @@ export default function Main() {
             <div className="likes">
               <p>165</p>
               <a href="">
-                <img src={Heart} alt="" />
+  
+                <img src={Heart} alt="heart icon" />
               </a>
             </div>
           </div>
