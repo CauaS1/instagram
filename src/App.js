@@ -7,17 +7,8 @@ import Main from './components/Main/index';
 import './App.css'
 
 export default function App() {
-  const [users, setUsers] = useState({});
+  // const [users, setUsers] = useState([]);
 
-  // useEffect(() => {
-  //   api.get("users").then(response => {
-  //     setUsers(response.data);
-  //   }, [users ]);
-
-  //   console.log(users);
-  // });
-
-  
   // useEffect(() => {
   //   async function loadUser() {
   //     const response = await api.get("users");
@@ -27,11 +18,9 @@ export default function App() {
   //   loadUser();
   // }, [users]);
 
-  // var allUsers = {...users};
-
-  // { allUsers.map(user => {
-  //   return <li> { user.name } </li>
-  // })  }
+  // { users.map(opa => {
+  //   return <li> { opa.name } </li>
+  // }) }
 
   return (
     <div className="container">
