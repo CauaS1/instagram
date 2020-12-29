@@ -28,10 +28,6 @@ export default function Main() {
     setModal(true);
   }
 
-  function handleCloseModal() {
-    setModal(false);
-  } 
-
   return (
     <div className="main-container">
       <Aside />
@@ -66,7 +62,6 @@ export default function Main() {
           })}
         </div>
       </div>
-      <button onClick={handleCloseModal} >Close</button>
     </div>
   );
 }

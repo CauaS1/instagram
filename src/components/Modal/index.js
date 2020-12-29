@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 
 import Heart from '../../icon/heart.svg';
 
 export default function Modal(props) {
   const [visibility, setVisibility] = useState(props.isEnable);
-  console.log(props.isEnable)
+  
+  useEffect(() => {
+    setVisibility(props.isEnable)
+  });
+
+  function handleCloseModel() {
+    setVisibility(false);
+  }
+
   return (
     <>
       {visibility ? (
@@ -36,6 +44,7 @@ export default function Modal(props) {
               </div>
             </div>
           </div>
+          <button onClick={handleCloseModel} >Close</button>
         </div>
       ) : ( 
         null
