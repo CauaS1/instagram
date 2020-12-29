@@ -1,5 +1,5 @@
 aside {
-  width: 100%;
+  width: 250px;
   height: 100%;
 
   display: grid;
@@ -8,7 +8,6 @@ aside {
   padding: 3rem 0;
   background-color: #ffffff;
   box-shadow: 0px 1px 5px 1px #cacace63;
-
 }
 
 aside .top-side {
