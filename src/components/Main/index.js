@@ -4,7 +4,8 @@ import Aside from '../AsideBar/index';
 import Header from '../Header/index';
 import Modal from '../Modal/index';
 
-import Heart from '../../icon/heart.svg';
+// import Heart from '../../icon/heart.svg';
+import { FaRegHeart } from 'react-icons/fa';
 
 import api from '../../services/api';
 
@@ -13,7 +14,8 @@ import './index.css';
 
 export default function Main() {
   const [users, setUsers] = useState([]);
-  const [modal, setModal] = useState(false)
+  const [userInfo, setUserInfo] = useState([]);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     async function loadUser() {
@@ -28,21 +30,47 @@ export default function Main() {
     setModal(true);
   }
 
+  function handleCloseModal() {
+    setModal(false);
+  }
+
+  function takeData(user) {
+    const userInfo = user //undefined, probably because the first value returns undefined
+    setUserInfo(userInfo);
+  }
+
+  const like = (id) => {
+    console.log(userInfo)
+    // setUsers(
+    //   users.map((user) => {
+    //     if(user.id == id) {
+    //       return { ...user, liked: !user.liked };
+    //     }
+    //     return user;
+    //   })
+    // );
+
+    // setUsers(userInfo.liked);
+  };
+
+  //Create a new NOTION to do some annotations
   return (
     <div className="main-container">
       <Aside />
-      <Modal isEnable={modal} />
+      <Modal isEnable={modal} functionToClose={handleCloseModal} userInfo={userInfo} isLiked={like} />
 
       <div className="content-container">
         <Header title="Feed" />
         <div className="post-list">
           {users.map(user => {
             return (
-              <div className="post" key={user.index} onClick={handleOpenModal}>
-                <img src={user.post.image} alt="" />
+              <div className="post" key={user.id} onClick={() => takeData(user)} >
+                <div className="img-container" onClick={handleOpenModal}>
+                  <img src={user.post.image} alt="post img" />
+                </div>
 
                 <div className="informations">
-                  <div className="main-info">
+                  <div className="main-info"  >
                     <img src={user.photo} alt="" />
                     <div>
                       <p> {user.name} </p>
@@ -51,10 +79,12 @@ export default function Main() {
                   </div>
 
                   <div className="likes">
-                    <p> {user.post_info.likes} </p>
-                    <a href="">
-                      <img src={Heart} alt="heart icon" />
-                    </a>
+                    <p style={{ color: user.liked ? '#f50057' : '#caced1', transition: '.3s' }} > {user.post_info.likes} </p>
+                    <div onClick={() => like(user.id)}>
+                      <FaRegHeart size={17}
+                        style={{ color: user.liked ? '#f50057' : '#caced1' }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

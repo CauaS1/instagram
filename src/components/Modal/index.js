@@ -1,54 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import './index.css';
 
-import Heart from '../../icon/heart.svg';
+import { FaRegHeart } from 'react-icons/fa';
 
 export default function Modal(props) {
+  const [users, setUsers] = useState([]);
   const [visibility, setVisibility] = useState(props.isEnable);
-  
+
   useEffect(() => {
     setVisibility(props.isEnable)
   });
 
-  function handleCloseModel() {
-    setVisibility(false);
-  }
-
   return (
     <>
       {visibility ? (
-        <div className="modal-container">
+        <div className="modal-container" onClick={props.functionToClose} >
           <div className="modal">
-            <img src="https://images.unsplash.com/photo-1609082011559-6cfda1bfa60b?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+            <img src={props.userInfo.post.image} alt="" />
 
             <div className="informations">
               <div className="basic-info">
-                <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
+                <img src={props.userInfo.photo} alt="" />
                 <div>
-                  <h3>Madara matador</h3>
+                  <h3>{props.userInfo.name}</h3>
                   <p>at Konoha Village </p>
                 </div>
               </div>
 
               <div className="secondary-info">
-                <p>A photo taked at Mountain Everest, near the river <br />
-            and some other things facebook indian
-            </p>
+                <p> {props.userInfo.post.title} </p>
               </div>
 
               <div className="reactions">
-                <p>4185</p>
-                <a href="">
-                  <img src={Heart} alt="" />
-                </a>
+                <p style={{ color: props.userInfo.liked ? '#f50057' : '#caced1' }} > {props.userInfo.post_info.likes} </p>
+                <div onClick={() => props.like(user.id)}>
+                  <FaRegHeart size={17}
+                    style={{ color: props.userInfo.liked ? '#f50057' : '#caced1' }}
+                  />
+                </div>
               </div>
             </div>
           </div>
-          <button onClick={handleCloseModel} >Close</button>
         </div>
-      ) : ( 
-        null
-      )}
+      ) : (
+          null
+        )}
     </>
   );
 }

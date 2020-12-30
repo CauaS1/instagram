@@ -30,6 +30,7 @@
   grid-template-columns: 500px 1fr;
 
   transition: .3s;
+  z-index: 6;
 }
 
 .modal img {
@@ -37,6 +38,7 @@
   height: 100%;
 
   object-fit: cover;
+  background-color: #f1f5f8;
 }
 
 .modal .informations {
@@ -101,11 +103,14 @@
   font-size: 1.4rem;
   color: #caced1;
   margin-right: .7rem;
+  font-weight: 500;
 }
 
-.reactions a {
+.reactions div {
   width: 2rem;
   height: 2rem; 
+
+  cursor: pointer;
 
   display: flex;
   justify-content: center;
