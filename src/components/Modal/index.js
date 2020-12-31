@@ -32,10 +32,10 @@ export default function Modal(props) {
               </div>
 
               <div className="reactions">
-                <p style={{ color: props.userInfo.liked ? '#f50057' : '#caced1' }} > {props.userInfo.post_info.likes} </p>
-                <div onClick={() => props.like(user.id)}>
+                <p style={{ color: props.isLiked.like  ? '#f50057' : '#caced1' }} > {props.userInfo.post_info.likes} </p>
+                <div>
                   <FaRegHeart size={17}
-                    style={{ color: props.userInfo.liked ? '#f50057' : '#caced1' }}
+                    style={{ color: props.isLiked.like ? '#f50057' : '#caced1' }}
                   />
                 </div>
               </div>

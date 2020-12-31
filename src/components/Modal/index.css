@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
 
-  position: fixed;
+  position: absolute;
   right: 0;
   left: 0;
   top: 0;
@@ -30,7 +30,7 @@
   grid-template-columns: 500px 1fr;
 
   transition: .3s;
-  z-index: 6;
+  z-index: 5;
 }
 
 .modal img {

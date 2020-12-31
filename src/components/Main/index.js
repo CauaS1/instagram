@@ -16,6 +16,7 @@ export default function Main() {
   const [users, setUsers] = useState([]);
   const [userInfo, setUserInfo] = useState([]);
   const [modal, setModal] = useState(false);
+  const [likes, setLikes] = useState([]);
 
   useEffect(() => {
     async function loadUser() {
@@ -39,25 +40,30 @@ export default function Main() {
     setUserInfo(userInfo);
   }
 
-  const like = (id) => {
-    console.log(userInfo)
-    // setUsers(
+  const handleLike = (id) => {
+    users.map((user) => {
+      if (user.id == id) {
+        setLikes({ ...user, like: true });
+      }
+    })
+
+    // setLikes(
     //   users.map((user) => {
     //     if(user.id == id) {
-    //       return { ...user, liked: !user.liked };
+    //       return { ...user, liked: true };
     //     }
     //     return user;
     //   })
     // );
-
-    // setUsers(userInfo.liked);
   };
+
+
 
   //Create a new NOTION to do some annotations
   return (
     <div className="main-container">
       <Aside />
-      <Modal isEnable={modal} functionToClose={handleCloseModal} userInfo={userInfo} isLiked={like} />
+      <Modal isEnable={modal} functionToClose={handleCloseModal} userInfo={userInfo} isLiked={likes} />
 
       <div className="content-container">
         <Header title="Feed" />
@@ -79,10 +85,10 @@ export default function Main() {
                   </div>
 
                   <div className="likes">
-                    <p style={{ color: user.liked ? '#f50057' : '#caced1', transition: '.3s' }} > {user.post_info.likes} </p>
-                    <div onClick={() => like(user.id)}>
+                    <p style={{ color: likes.like ? '#f50057' : '#caced1', transition: '.3s' }} > {user.post_info.likes} </p>
+                    <div onClick={() => handleLike(user.id)}>
                       <FaRegHeart size={17}
-                        style={{ color: user.liked ? '#f50057' : '#caced1' }}
+                        style={{ color: likes.like ? '#f50057' : '#caced1' }}
                       />
                     </div>
                   </div>
